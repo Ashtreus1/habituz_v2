@@ -1,16 +1,21 @@
-import Hero from "@/components/hero";
-import ConnectSupabaseSteps from "@/components/tutorial/connect-supabase-steps";
-import SignUpUserSteps from "@/components/tutorial/sign-up-user-steps";
-import { hasEnvVars } from "@/utils/supabase/check-env-vars";
+import AuthDialog from "@/components/auth-dialog";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 
-export default async function Index() {
+export default function Home() {
+
   return (
-    <>
-      <Hero />
-      <main className="flex-1 flex flex-col gap-6 px-4">
-        <h2 className="font-medium text-xl mb-4">Next steps</h2>
-        {hasEnvVars ? <SignUpUserSteps /> : <ConnectSupabaseSteps />}
-      </main>
-    </>
+    <div className="min-h-screen flex flex-col justify-center items-center">
+      <div className="absolute fixed top-10 right-10 rounded-full p-3">
+        <ThemeSwitcher />
+      </div>
+      <div className="flex flex-col justify-center items-center text-center">
+        <h1 className="text-5xl font-bold dark:text-gray-200 text-gray-800 mb-5">
+          Tick your habit with 
+          <span className="text-cyan-300"> Habitus</span>
+        </h1>
+        <h3 className="text-2xl text-gray-600 font-semibold mb-5">Set clear habit and execute it!</h3>
+        <AuthDialog/>
+      </div>
+    </div>  
   );
 }
